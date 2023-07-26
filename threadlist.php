@@ -19,19 +19,25 @@
 
 
     <?php
+// Other code above...
 
+$id = isset($_GET['catid']) ? $_GET['catid'] : 0;
+$sql = "SELECT * FROM `categories` WHERE category_id=$id"; 
+$result = mysqli_query($conn, $sql);
 
-    $id = $_GET['catid'];
-    $sql = "SELECT * FROM `categories` WHERE category_id=$id"; 
-    $result = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_assoc($result)){
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $catname = $row['category_name'];
         $catdesc = $row['category_description'];
     }
-    
-    ?>
+} else {
+    // Handle the case where the query didn't return any rows or there was an error
+    echo "No category found.";
+}
+?>
 
-<?php
+
+    <?php
     $showAlert = false;
     $method = $_SERVER['REQUEST_METHOD'];
     if($method=='POST'){
@@ -68,8 +74,12 @@
 
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Welcome to <?php echo $catname;?> Forum</h1>
-                <p class=" col-md-8 fs-4 "><?php echo $catdesc;?></p>
+                <h1 class="display-5 fw-bold">Welcome to
+                    <?php echo $catname;?> Forum
+                </h1>
+                <p class=" col-md-8 fs-4 ">
+                    <?php echo $catdesc;?>
+                </p>
                 <hr class="my-4">
                 <p class="col-md-8 fs-4">This is a peer to peer forum. No Spam / Advertising / Self-promote in the
                     forums is not allowed. Do not post copyright-infringing material. Do not post “offensive” posts,
@@ -162,7 +172,7 @@ while($row = mysqli_fetch_assoc($result)){
                   }
 
 ?>
-</div>
+    </div>
 
 
 
@@ -172,15 +182,15 @@ while($row = mysqli_fetch_assoc($result)){
 
 
 
-        <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Optional JavaScript; choose one of the two! -->
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
 
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
