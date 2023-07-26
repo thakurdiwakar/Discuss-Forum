@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             if($result){
                 $showAlert = true;
-                header("Location: /diw1/1.php?signupsuccess=true");
+                header("Location: /diw1/main.php?signupsuccess=true");
                 exit();
             }
 
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
         }
     }
-    header("Location: /diw1/1.php?signupsuccess=false&error=$showError");
+    header("Location: /diw1/main.php?signupsuccess=false&error=$showError");
 
 }
 ?>
