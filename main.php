@@ -12,11 +12,6 @@
     <?php include 'partials/_dbconnect.php'; ?>
     <?php include 'partials/_header.php'; ?>
 
-
-
-
-
-
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -40,7 +35,6 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
 
 
     <title>DiscussForum</title>
@@ -68,7 +62,7 @@
   $desc = $row['category_description'];
   echo '<div class="col-md-4 my-2">
           <div class="card" style="width: 18rem;">
-              <img src="img/card4.jpg"'.$id. ' class="card-img-top" alt="...">
+              <img src="img/card1.jpg"'.$id. ' class="card-img-top" alt="...">
               <div class="card-body">
                   <h5 class="card-title"><a href="threadlist.php?catid=' . $id . '">' . $cat . '</a></h5>
                   <p class="card-text">' . substr($desc, 0, 90). '... </p>
@@ -79,18 +73,6 @@
  }
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
     </div>

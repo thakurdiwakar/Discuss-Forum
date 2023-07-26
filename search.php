@@ -12,12 +12,6 @@
     <?php include 'partials/_dbconnect.php'; ?>
     <?php include 'partials/_header.php'; ?>
 
-
-
-
-
-
-
     <title>DiscussForum</title>
 </head>
 
@@ -62,19 +56,6 @@ $query = $_GET["search"];
 
   ?>
            
-    
-
-
-
-
-
-
-
-
-
-
-
-
 
     
     <!-- Optional JavaScript; choose one of the two! -->
