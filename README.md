@@ -2,12 +2,15 @@
 
 Discuss Forum is a web-based discussion platform that allows users to interact and discuss various topics.
 
+
 ## Features
 
 - View categories and threads
 - Create new threads and participate in existing discussions
 - User registration and authentication
-- ...
+
+
+[DiscussForum.webm](https://github.com/thakurdiwakar/Discuss-Forum/assets/76618190/922fca07-b22c-4b74-89ee-2af8a19f8714)
 
 ## Installation
 
