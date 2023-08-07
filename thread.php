@@ -23,16 +23,27 @@
     $id = $_GET['threadid'];
     $sql = "SELECT * FROM `threads` WHERE thread_id=$id"; 
     $result = mysqli_query($conn, $sql);
-    while($row = mysqli_fetch_assoc($result)){
+    while ($row = mysqli_fetch_assoc($result)) {
         $title = $row['thread_title'];
         $desc = $row['thread_desc'];
         $thread_user_id = $row['thread_user_id'];
-        // Query the users table to find out the name of OP
-        $sql2 = "SELECT user_email FROM `users` WHERE sno='$thread_user_id'";
+    
+        // Query the users table to find out the name of OP using a JOIN
+        $sql2 = "SELECT u.user_email FROM `users` u WHERE u.sno='$thread_user_id'";
         $result2 = mysqli_query($conn, $sql2);
         $row2 = mysqli_fetch_assoc($result2);
-        $posted_by = $row2['user_email'];
+    
+        if ($row2 !== null) {
+            $posted_by = $row2['user_email'];
+        } else {
+            // Handle the case when $row2 is null or no user_email found
+            $posted_by = 'Unknown User';
+        }
+    
+        // Use the $title, $desc, and $posted_by variables as needed in your code
+        // ...
     }
+    
     
     ?>
 

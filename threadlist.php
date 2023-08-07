@@ -139,9 +139,9 @@ $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
 $result = mysqli_query($conn, $sql);
 
 $noResult=true;
-while($row = mysqli_fetch_assoc($result)){
-    $noResult=false;
-
+while ($row = mysqli_fetch_assoc($result)) {
+    $noResult = false;
+    // $result2 = mysqli_query($conn, $sql2);
     $id= $row['thread_id'];
     $title = $row['thread_title'];
     $desc = $row['thread_desc'];
@@ -150,14 +150,24 @@ while($row = mysqli_fetch_assoc($result)){
     $sql2 = "SELECT user_email FROM `users` WHERE sno='$thread_user_id'";
     $result2 = mysqli_query($conn, $sql2);
     $row2 = mysqli_fetch_assoc($result2);
+    $result2 = mysqli_query($conn, $sql2);
 
+    // Check if $row2 is not null before accessing its elements
+    if ($row2 = mysqli_fetch_assoc($result2)) {
+        $user_email = $row2['user_email'];
+    } else {
+        // Handle the case when $row2 is null or no user_email found
+        $user_email = 'Unknown User';
+    }
 
     echo '<div class="media my-3">
     <img src="img/userdefault.png" width="54px" class="mr-3" alt="...">
-    <div class="media-body">'.
-     '<h5 class="mt-0"> <a class="text-dark" href="thread.php?threadid=' . $id. '"> ' . $title . ' </a></h5>
-        '. $desc . ' </div>'.'<div class="font-weight-bold my-0"> <strong>Asked by </strong>: '. $row2['user_email'] . ' at '. $thread_time. '</div>'.
-'</div>';
+    <div class="media-body">
+        <h5 class="mt-0"> <a class="text-dark" href="thread.php?threadid=' . $id . '"> ' . $title . ' </a></h5>
+        ' . $desc . '
+    </div>
+    <div class="font-weight-bold my-0"> <strong>Asked by </strong>: ' . $user_email . ' at ' . $thread_time . '</div>
+</div>';
 
 }
 

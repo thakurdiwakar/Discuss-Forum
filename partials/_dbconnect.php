@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "discussforum";
+$database = "eruptive";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
